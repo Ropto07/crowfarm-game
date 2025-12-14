@@ -1,0 +1,660 @@
+/* Reset y base */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, sans-serif;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    min-height: 100vh;
+    color: #333;
+}
+
+#app {
+    max-width: 500px;
+    margin: 0 auto;
+    background: white;
+    min-height: 100vh;
+    box-shadow: 0 0 20px rgba(0,0,0,0.1);
+}
+
+/* Header */
+.game-header {
+    background: linear-gradient(135deg, #4c51bf 0%, #6b46c1 100%);
+    color: white;
+    padding: 15px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.user-info {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.avatar {
+    width: 50px;
+    height: 50px;
+    background: rgba(255,255,255,0.2);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 24px;
+}
+
+.user-stats {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.stat {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    font-size: 14px;
+}
+
+.stat-icon {
+    font-size: 16px;
+}
+
+.level-info {
+    text-align: right;
+}
+
+.level {
+    font-size: 18px;
+    font-weight: bold;
+    margin-bottom: 5px;
+}
+
+.xp-bar {
+    width: 120px;
+    height: 8px;
+    background: rgba(255,255,255,0.3);
+    border-radius: 4px;
+    overflow: hidden;
+}
+
+.xp-fill {
+    height: 100%;
+    background: #48bb78;
+    transition: width 0.3s;
+}
+
+/* Navegación */
+.game-nav {
+    display: flex;
+    background: #f7fafc;
+    border-bottom: 2px solid #e2e8f0;
+}
+
+.nav-btn {
+    flex: 1;
+    padding: 12px;
+    border: none;
+    background: none;
+    font-size: 16px;
+    cursor: pointer;
+    transition: all 0.3s;
+}
+
+.nav-btn:hover {
+    background: #edf2f7;
+}
+
+.nav-btn.active {
+    background: white;
+    font-weight: bold;
+    border-bottom: 3px solid #4c51bf;
+}
+
+/* Contenido del juego */
+.game-section {
+    display: none;
+    padding: 20px;
+    min-height: 500px;
+}
+
+.game-section.active {
+    display: block;
+}
+
+/* Granja */
+.farm-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 10px;
+    margin-bottom: 20px;
+}
+
+.farm-plot {
+    aspect-ratio: 1;
+    background: #9ae6b4;
+    border: 2px solid #68d391;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 30px;
+    cursor: pointer;
+    transition: all 0.3s;
+}
+
+.farm-plot:hover {
+    transform: scale(1.05);
+}
+
+.farm-plot.empty {
+    background: #c6f6d5;
+}
+
+.farm-plot.planted {
+    background: #fefcbf;
+    border-color: #f6e05e;
+}
+
+.farm-plot.ready {
+    background: #fed7d7;
+    border-color: #fc8181;
+    animation: pulse 1s infinite;
+}
+
+@keyframes pulse {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.05); }
+    100% { transform: scale(1); }
+}
+
+.crops-menu {
+    background: #f7fafc;
+    border-radius: 10px;
+    padding: 15px;
+}
+
+.crops-menu h3 {
+    margin-bottom: 15px;
+    color: #4a5568;
+}
+
+.crops-list {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.crop-item {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    padding: 10px;
+    background: white;
+    border-radius: 8px;
+    border: 1px solid #e2e8f0;
+}
+
+.crop-icon {
+    font-size: 32px;
+}
+
+.crop-info {
+    flex: 1;
+}
+
+.crop-name {
+    font-weight: bold;
+    color: #2d3748;
+}
+
+.crop-cost, .crop-time {
+    font-size: 14px;
+    color: #718096;
+}
+
+.plant-btn {
+    padding: 8px 16px;
+    background: #48bb78;
+    color: white;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    font-weight: bold;
+    transition: background 0.3s;
+}
+
+.plant-btn:hover {
+    background: #38a169;
+}
+
+/* Huevo */
+.egg-container {
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+.egg {
+    font-size: 100px;
+    margin: 20px 0;
+    animation: float 3s ease-in-out infinite;
+}
+
+@keyframes float {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-10px); }
+}
+
+.egg-info {
+    margin: 20px 0;
+}
+
+.egg-cost {
+    font-size: 24px;
+    font-weight: bold;
+    color: #d69e2e;
+    margin: 15px 0;
+}
+
+.action-btn {
+    padding: 15px 30px;
+    background: linear-gradient(135deg, #d69e2e 0%, #b7791f 100%);
+    color: white;
+    border: none;
+    border-radius: 10px;
+    font-size: 18px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: transform 0.3s;
+    margin: 10px 0;
+}
+
+.action-btn:hover {
+    transform: scale(1.05);
+}
+
+.action-btn:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+
+/* Cuervos */
+.crows-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 15px;
+    margin-top: 20px;
+}
+
+.crow-card {
+    background: white;
+    border: 2px solid #e2e8f0;
+    border-radius: 10px;
+    padding: 15px;
+    text-align: center;
+    transition: transform 0.3s;
+}
+
+.crow-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+}
+
+.crow-card.common {
+    border-color: #a0aec0;
+}
+
+.crow-card.rare {
+    border-color: #4299e1;
+}
+
+.crow-card.epic {
+    border-color: #9f7aea;
+}
+
+.crow-card.legendary {
+    border-color: #f6ad55;
+    animation: glow 2s infinite;
+}
+
+@keyframes glow {
+    0%, 100% { box-shadow: 0 0 10px #f6ad55; }
+    50% { box-shadow: 0 0 20px #f6ad55; }
+}
+
+.crow-icon {
+    font-size: 40px;
+    margin-bottom: 10px;
+}
+
+.crow-name {
+    font-weight: bold;
+    margin-bottom: 5px;
+}
+
+.crow-rarity {
+    font-size: 12px;
+    padding: 3px 8px;
+    border-radius: 12px;
+    display: inline-block;
+    margin-bottom: 10px;
+}
+
+.crow-rarity.common {
+    background: #edf2f7;
+    color: #4a5568;
+}
+
+.crow-rarity.rare {
+    background: #ebf8ff;
+    color: #2b6cb0;
+}
+
+.crow-rarity.epic {
+    background: #faf5ff;
+    color: #6b46c1;
+}
+
+.crow-rarity.legendary {
+    background: #fffaf0;
+    color: #c05621;
+}
+
+/* Tienda */
+.shop-tabs {
+    display: flex;
+    background: #f7fafc;
+    border-radius: 10px 10px 0 0;
+    overflow: hidden;
+}
+
+.shop-tab {
+    flex: 1;
+    padding: 12px;
+    border: none;
+    background: none;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background 0.3s;
+}
+
+.shop-tab:hover {
+    background: #edf2f7;
+}
+
+.shop-tab.active {
+    background: white;
+    font-weight: bold;
+    border-bottom: 3px solid #4c51bf;
+}
+
+.shop-content {
+    background: white;
+    border-radius: 0 0 10px 10px;
+    padding: 20px;
+}
+
+.shop-tab-content {
+    display: none;
+}
+
+.shop-tab-content.active {
+    display: block;
+}
+
+.shop-item {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    padding: 15px;
+    background: #f7fafc;
+    border-radius: 10px;
+    margin-bottom: 10px;
+    border: 1px solid #e2e8f0;
+}
+
+.item-icon {
+    font-size: 40px;
+}
+
+.item-info {
+    flex: 1;
+}
+
+.item-name {
+    font-weight: bold;
+    color: #2d3748;
+}
+
+.item-desc {
+    font-size: 14px;
+    color: #718096;
+}
+
+.item-price {
+    font-weight: bold;
+    color: #2d3748;
+    font-size: 18px;
+}
+
+.buy-btn {
+    padding: 8px 16px;
+    background: #4c51bf;
+    color: white;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    font-weight: bold;
+    transition: background 0.3s;
+}
+
+.buy-btn:hover {
+    background: #434190;
+}
+
+.ads-section {
+    margin-top: 30px;
+    padding: 20px;
+    background: linear-gradient(135deg, #f6ad55 0%, #ed8936 100%);
+    border-radius: 10px;
+    color: white;
+}
+
+.ad-reward {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    margin-top: 15px;
+}
+
+.reward-icon {
+    font-size: 40px;
+}
+
+.reward-info {
+    flex: 1;
+}
+
+.reward-text {
+    font-weight: bold;
+    font-size: 18px;
+}
+
+.reward-limit {
+    font-size: 14px;
+    opacity: 0.9;
+}
+
+.ad-btn {
+    padding: 12px 24px;
+    background: white;
+    color: #ed8936;
+    border: none;
+    border-radius: 8px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: transform 0.3s;
+}
+
+.ad-btn:hover {
+    transform: scale(1.05);
+}
+
+.ad-btn:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+
+/* Footer */
+.game-footer {
+    background: #f7fafc;
+    padding: 15px;
+    border-top: 2px solid #e2e8f0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.footer-info {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    font-size: 14px;
+    color: #718096;
+}
+
+.footer-actions {
+    display: flex;
+    gap: 10px;
+}
+
+.footer-btn {
+    padding: 8px 16px;
+    background: #4c51bf;
+    color: white;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: background 0.3s;
+}
+
+.footer-btn:hover {
+    background: #434190;
+}
+
+/* Modales */
+.modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0,0,0,0.5);
+    display: none;
+    z-index: 1000;
+}
+
+.modal {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: white;
+    border-radius: 10px;
+    padding: 20px;
+    min-width: 300px;
+    max-width: 90%;
+    display: none;
+    z-index: 1001;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+}
+
+.modal.active {
+    display: block;
+}
+
+.modal-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+    padding-bottom: 15px;
+    border-bottom: 2px solid #e2e8f0;
+}
+
+.modal-close {
+    background: none;
+    border: none;
+    font-size: 24px;
+    cursor: pointer;
+    color: #718096;
+}
+
+.modal-close:hover {
+    color: #4a5568;
+}
+
+.modal-body {
+    max-height: 60vh;
+    overflow-y: auto;
+}
+
+/* Responsive */
+@media (max-width: 500px) {
+    .game-header {
+        flex-direction: column;
+        gap: 15px;
+        text-align: center;
+    }
+    
+    .level-info {
+        text-align: center;
+    }
+    
+    .xp-bar {
+        width: 100%;
+    }
+    
+    .crows-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .shop-item {
+        flex-direction: column;
+        text-align: center;
+        gap: 10px;
+    }
+}
+
+/* Animaciones */
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+.game-section.active {
+    animation: fadeIn 0.5s ease-out;
+}
+
+/* Scrollbar personalizada */
+::-webkit-scrollbar {
+    width: 8px;
+}
+
+::-webkit-scrollbar-track {
+    background: #f1f1f1;
+    border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb {
+    background: #c1c1c1;
+    border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: #a1a1a1;
+  }
