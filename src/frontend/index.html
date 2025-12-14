@@ -1,1 +1,219 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🐦 Crow Farmer - Granja de Cuervos</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://telegram.org/js/telegram-web-app.js"></script>
+</head>
+<body>
+    <div id="app">
+        <!-- Header -->
+        <header class="game-header">
+            <div class="user-info">
+                <div class="avatar">👤</div>
+                <div class="user-stats">
+                    <div class="stat">
+                        <span class="stat-icon">💰</span>
+                        <span id="coins">3,000</span>
+                    </div>
+                    <div class="stat">
+                        <span class="stat-icon">🎫</span>
+                        <span id="tickets">100</span>
+                    </div>
+                    <div class="stat">
+                        <span class="stat-icon">⚡</span>
+                        <span id="energy">1,500/1,500</span>
+                    </div>
+                </div>
+            </div>
+            <div class="level-info">
+                <div class="level">Nivel <span id="level">1</span></div>
+                <div class="xp-bar">
+                    <div class="xp-fill" id="xp-fill" style="width: 0%"></div>
+                </div>
+            </div>
+        </header>
 
+        <!-- Navegación -->
+        <nav class="game-nav">
+            <button class="nav-btn active" data-section="farm">🏡 Granja</button>
+            <button class="nav-btn" data-section="egg">🥚 Huevo</button>
+            <button class="nav-btn" data-section="crows">🐦 Cuervos</button>
+            <button class="nav-btn" data-section="market">🛒 Tienda</button>
+        </nav>
+
+        <!-- Contenido principal -->
+        <main class="game-content">
+            <!-- Sección Granja -->
+            <section id="farm-section" class="game-section active">
+                <div class="farm-grid" id="farm-grid">
+                    <!-- 3x3 grid generado por JavaScript -->
+                </div>
+                
+                <div class="crops-menu">
+                    <h3>🌱 Cultivos disponibles</h3>
+                    <div class="crops-list">
+                        <div class="crop-item" data-crop="trigo">
+                            <div class="crop-icon">🌾</div>
+                            <div class="crop-info">
+                                <div class="crop-name">Trigo</div>
+                                <div class="crop-cost">💰 5</div>
+                                <div class="crop-time">⏱️ 10s</div>
+                            </div>
+                            <button class="plant-btn">Plantar</button>
+                        </div>
+                        
+                        <div class="crop-item" data-crop="maiz">
+                            <div class="crop-icon">🌽</div>
+                            <div class="crop-info">
+                                <div class="crop-name">Maíz</div>
+                                <div class="crop-cost">💰 25</div>
+                                <div class="crop-time">⏱️ 30s</div>
+                            </div>
+                            <button class="plant-btn">Plantar</button>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Sección Huevo -->
+            <section id="egg-section" class="game-section">
+                <div class="egg-container">
+                    <div class="egg" id="main-egg">🥚</div>
+                    <div class="egg-info">
+                        <h3>Huevo Mágico</h3>
+                        <p>Eclosiona para obtener un cuervo aleatorio</p>
+                        <div class="egg-cost">🎫 500 tickets</div>
+                        <button id="hatch-btn" class="action-btn">Eclosionar Huevo</button>
+                        <div class="egg-stats">
+                            <div>Cuervos obtenidos: <span id="total-crows">0</span></div>
+                            <div>Tickets disponibles: <span id="available-tickets">100</span></div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="recent-hatches">
+                    <h4>📜 Últimas eclosiones</h4>
+                    <div id="hatches-list" class="hatches-list">
+                        <!-- Lista generada por JavaScript -->
+                    </div>
+                </div>
+            </section>
+
+            <!-- Sección Cuervos -->
+            <section id="crows-section" class="game-section">
+                <div class="crows-header">
+                    <h3>🐦 Tu Colección</h3>
+                    <div class="collection-stats">
+                        <span>Total: <span id="total-collected">0</span></span>
+                        <span>Raros: <span id="rare-crows">0</span></span>
+                        <span>Épicos: <span id="epic-crows">0</span></span>
+                    </div>
+                </div>
+                
+                <div id="crows-grid" class="crows-grid">
+                    <!-- Cuervos generados por JavaScript -->
+                    <div class="empty-collection">
+                        <div class="empty-icon">🥚</div>
+                        <p>¡Aún no tienes cuervos!</p>
+                        <p>Eclosiona un huevo para comenzar tu colección.</p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Sección Tienda -->
+            <section id="market-section" class="game-section">
+                <div class="shop-tabs">
+                    <button class="shop-tab active" data-tab="tickets">🎫 Tickets</button>
+                    <button class="shop-tab" data-tab="energy">⚡ Energía</button>
+                    <button class="shop-tab" data-tab="upgrades">🛠️ Mejoras</button>
+                </div>
+                
+                <div class="shop-content">
+                    <!-- Tickets -->
+                    <div id="tickets-tab" class="shop-tab-content active">
+                        <div class="shop-item">
+                            <div class="item-icon">🎁</div>
+                            <div class="item-info">
+                                <div class="item-name">Paquete Básico</div>
+                                <div class="item-desc">600 tickets</div>
+                            </div>
+                            <div class="item-price">$0.99</div>
+                            <button class="buy-btn" data-product="basic">Comprar</button>
+                        </div>
+                        
+                        <div class="shop-item">
+                            <div class="item-icon">🎁🎁</div>
+                            <div class="item-info">
+                                <div class="item-name">Paquete Granjero</div>
+                                <div class="item-desc">1,800 tickets</div>
+                            </div>
+                            <div class="item-price">$2.99</div>
+                            <button class="buy-btn" data-product="farmer">Comprar</button>
+                        </div>
+                    </div>
+                    
+                    <!-- Anuncios -->
+                    <div class="ads-section">
+                        <h4>📺 Ver anuncio por tickets</h4>
+                        <div class="ad-reward">
+                            <div class="reward-icon">🎫</div>
+                            <div class="reward-info">
+                                <div class="reward-text">+10 tickets por anuncio</div>
+                                <div class="reward-limit">Hoy: <span id="ads-today">0</span>/10</div>
+                            </div>
+                            <button id="watch-ad-btn" class="ad-btn">Ver Anuncio</button>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </main>
+
+        <!-- Footer -->
+        <footer class="game-footer">
+            <div class="footer-info">
+                <span id="online-count">👥 1 jugador online</span>
+                <span id="server-time">🕐 Cargando...</span>
+            </div>
+            <div class="footer-actions">
+                <button id="help-btn" class="footer-btn">❓ Ayuda</button>
+                <button id="settings-btn" class="footer-btn">⚙️ Ajustes</button>
+            </div>
+        </footer>
+
+        <!-- Modales -->
+        <div id="modal-overlay" class="modal-overlay"></div>
+        
+        <div id="crop-modal" class="modal">
+            <div class="modal-header">
+                <h3 id="crop-modal-title">Plantar Cultivo</h3>
+                <button class="modal-close">&times;</button>
+            </div>
+            <div class="modal-body">
+                <div id="crop-modal-content"></div>
+            </div>
+        </div>
+        
+        <div id="crow-modal" class="modal">
+            <div class="modal-header">
+                <h3 id="crow-modal-title">Nuevo Cuervo</h3>
+                <button class="modal-close">&times;</button>
+            </div>
+            <div class="modal-body">
+                <div id="crow-modal-content"></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Scripts -->
+    <script src="config.js"></script>
+    <script src="app.js"></script>
+    <script src="farm.js"></script>
+    <script src="egg.js"></script>
+    <script src="crows.js"></script>
+    <script src="market.js"></script>
+    <script src="ads.js"></script>
+</body> 
+</html>
