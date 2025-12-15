@@ -1,1 +1,58 @@
-
+{
+  "name": "crow-farmer-telegram",
+  "version": "1.0.0",
+  "description": "Juego de granja de cuervos para Telegram Mini App con seguridad completa",
+  "main": "src/backend/server.js",
+  "scripts": {
+    "start": "node src/backend/server.js",
+    "dev": "nodemon src/backend/server.js",
+    "setup-db": "node scripts/setup-database.js",
+    "test": "jest",
+    "test-security": "jest tests/security.test.js",
+    "lint": "eslint src/",
+    "deploy": "npm run setup-db && npm start"
+  },
+  "dependencies": {
+    "express": "^4.18.2",
+    "node-telegram-bot-api": "^0.64.0",
+    "@supabase/supabase-js": "^2.39.0",
+    "dotenv": "^16.3.1",
+    "cors": "^2.8.5",
+    "helmet": "^7.1.0",
+    "express-rate-limit": "^7.1.5",
+    "bcryptjs": "^2.4.3",
+    "jsonwebtoken": "^9.0.2",
+    "validator": "^13.11.0",
+    "axios": "^1.6.0",
+    "stripe": "^14.13.0"
+  },
+  "devDependencies": {
+    "nodemon": "^3.0.1",
+    "jest": "^29.7.0",
+    "supertest": "^6.3.3",
+    "eslint": "^8.56.0"
+  },
+  "engines": {
+    "node": ">=18.0.0",
+    "npm": ">=9.0.0"
+  },
+  "keywords": [
+    "telegram",
+    "miniapp",
+    "game",
+    "crow",
+    "farm",
+    "security",
+    "blockchain"
+  ],
+  "author": "TuNombre",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/tuusuario/crow-farmer-telegram.git"
+  },
+  "bugs": {
+    "url": "https://github.com/tuusuario/crow-farmer-telegram/issues"
+  },
+  "homepage": "https://github.com/tuusuario/crow-farmer-telegram#readme"
+}
