@@ -9,40 +9,39 @@
 </head>
 <body>
     <div id="app">
-        <!-- Header -->
-        <header class="game-header">
-            <div class="user-info">
-                <div class="avatar">👤</div>
-                <div class="user-stats">
-                    <div class="stat">
-                        <span class="stat-icon">💰</span>
-                        <span id="coins">3,000</span>
-                    </div>
-                    <div class="stat">
-                        <span class="stat-icon">🎫</span>
-                        <span id="tickets">100</span>
-                    </div>
-                    <div class="stat">
-                        <span class="stat-icon">⚡</span>
-                        <span id="energy">1,500/1,500</span>
-                    </div>
-                </div>
+<header class="game-header">
+    <div class="user-info">
+        <div class="avatar">👤</div>
+        <div class="user-stats">
+            <div class="stat">
+                <span class="stat-icon">💰</span>
+                <span id="coins">3,000</span>
             </div>
-            <div class="level-info">
-                <div class="level">Nivel <span id="level">1</span></div>
-                <div class="xp-bar">
-                    <div class="xp-fill" id="xp-fill" style="width: 0%"></div>
-                </div>
+            <div class="stat">
+                <span class="stat-icon">🎫</span>
+                <span id="tickets">100</span>
             </div>
-        </header>
+            <div class="stat">
+                <span class="stat-icon">⚡</span>
+                <span id="energy" data-i18n="energy">1,500/1,500</span>
+            </div>
+        </div>
+    </div>
+    <div class="level-info">
+        <div class="level" data-i18n="level">Nivel <span id="level">1</span></div>
+        <div class="xp-bar">
+            <div class="xp-fill" id="xp-fill" style="width: 0%"></div>
+        </div>
+    </div>
+</header>
 
-        <!-- Navegación -->
-        <nav class="game-nav">
-            <button class="nav-btn active" data-section="farm">🏡 Granja</button>
-            <button class="nav-btn" data-section="egg">🥚 Huevo</button>
-            <button class="nav-btn" data-section="crows">🐦 Cuervos</button>
-            <button class="nav-btn" data-section="market">🛒 Tienda</button>
-        </nav>
+<!-- Navegación -->
+<nav class="game-nav">
+    <button class="nav-btn active" data-section="farm" data-i18n="crops">🏡 Granja</button>
+    <button class="nav-btn" data-section="egg" data-i18n="egg">🥚 Huevo</button>
+    <button class="nav-btn" data-section="crows" data-i18n="crows">🐦 Cuervos</button>
+    <button class="nav-btn" data-section="market" data-i18n="shop">🛒 Tienda</button>
+</nav>
 
         <!-- Contenido principal -->
         <main class="game-content">
@@ -78,28 +77,17 @@
                 </div>
             </section>
 
-            <!-- Sección Huevo -->
+          <!-- Sección Huevos -->
             <section id="egg-section" class="game-section">
-                <div class="egg-container">
-                    <div class="egg" id="main-egg">🥚</div>
-                    <div class="egg-info">
-                        <h3>Huevo Mágico</h3>
-                        <p>Eclosiona para obtener un cuervo aleatorio</p>
-                        <div class="egg-cost">🎫 500 tickets</div>
-                        <button id="hatch-btn" class="action-btn">Eclosionar Huevo</button>
-                        <div class="egg-stats">
-                            <div>Cuervos obtenidos: <span id="total-crows">0</span></div>
-                            <div>Tickets disponibles: <span id="available-tickets">100</span></div>
-                        </div>
-                    </div>
-                </div>
-                
-                <div class="recent-hatches">
-                    <h4>📜 Últimas eclosiones</h4>
-                    <div id="hatches-list" class="hatches-list">
-                        <!-- Lista generada por JavaScript -->
-                    </div>
-                </div>
+    <div class="egg-container">
+        <div class="egg" id="main-egg">🥚</div>
+        <div class="egg-info">
+            <h3 data-i18n="magicEgg">Huevo Mágico</h3>
+            <p data-i18n="hatchDescription">Eclosiona para obtener un cuervo aleatorio</p>
+            <div class="egg-cost">🎫 <span data-i18n="eggCost">500 tickets</span></div>
+            <button id="hatch-btn" class="action-btn" data-i18n="hatch">Eclosionar Huevo</button>
+        </div>
+    </div>
             </section>
 
             <!-- Sección Cuervos -->
@@ -124,38 +112,19 @@
             </section>
 
             <!-- Sección Tienda -->
-            <section id="market-section" class="game-section">
-                <div class="shop-tabs">
-                    <button class="shop-tab active" data-tab="tickets">🎫 Tickets</button>
-                    <button class="shop-tab" data-tab="energy">⚡ Energía</button>
-                    <button class="shop-tab" data-tab="upgrades">🛠️ Mejoras</button>
-                </div>
-                
-                <div class="shop-content">
-                    <!-- Tickets -->
-                    <div id="tickets-tab" class="shop-tab-content active">
-                        <div class="shop-item">
-                            <div class="item-icon">🎁</div>
-                            <div class="item-info">
-                                <div class="item-name">Paquete Básico</div>
-                                <div class="item-desc">600 tickets</div>
-                            </div>
-                            <div class="item-price">$0.99</div>
-                            <button class="buy-btn" data-product="basic">Comprar</button>
-                        </div>
-                        
-                        <div class="shop-item">
-                            <div class="item-icon">🎁🎁</div>
-                            <div class="item-info">
-                                <div class="item-name">Paquete Granjero</div>
-                                <div class="item-desc">1,800 tickets</div>
-                            </div>
-                            <div class="item-price">$2.99</div>
-                            <button class="buy-btn" data-product="farmer">Comprar</button>
-                        </div>
-                    </div>
-                    
-                    <!-- Anuncios -->
+<div class="ads-section">
+    <h4 data-i18n="watchAd">📺 Ver anuncio por tickets</h4>
+    <div class="ad-reward">
+        <div class="reward-icon">🎫</div>
+        <div class="reward-info">
+            <div class="reward-text" data-i18n="adReward">+10 tickets por anuncio</div>
+            <div class="reward-limit" data-i18n="dailyLimit">Hoy: <span id="ads-today">0</span>/10</div>
+        </div>
+        <button id="watch-ad-btn" class="ad-btn" data-i18n="watchAd">Ver Anuncio</button>
+    </div>
+</div>
+                   
+            <!-- Anuncios -->
                     <div class="ads-section">
                         <h4>📺 Ver anuncio por tickets</h4>
                         <div class="ad-reward">
