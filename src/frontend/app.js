@@ -40,7 +40,20 @@ const GameState = {
 // Inicializar la aplicación
 async function initGame() {
     console.log('🎮 Inicializando Crow Farmer...');
-    
+    // Inicializar sistema de configuraciones
+    if (window.SettingsSystem) {
+        SettingsSystem.init();
+    }
+    // Configurar botón de ajustes en el footer
+    const settingsBtn = document.getElementById('settings-btn');
+    if (settingsBtn) {
+        settingsBtn.addEventListener('click', () => {
+            if (window.SettingsSystem) {
+                SettingsSystem.showSettings();
+            }
+        });
+    }
+}
     // Configurar Telegram Web App
     if (window.Telegram && Telegram.WebApp) {
         Telegram.WebApp.ready();
