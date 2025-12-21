@@ -1,0 +1,15 @@
+[build]
+  functions = "functions"
+
+[dev]
+  framework = "#static"
+
+[[redirects]]
+  from = "/api/*"
+  to = "/.netlify/functions/api"
+  status = 200
+
+[[redirects]]
+  from = "/webhook"
+  to = "/.netlify/functions/bot"
+  status = 200
